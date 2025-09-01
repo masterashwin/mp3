@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP3 Analysis Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .metric { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .golden { background-color: #FFD700; color: #000; }
+        .green { background-color: #90EE90; color: #000; }
+        .yellow { background-color: #FFFF99; color: #000; }
+        .red { background-color: #FFB6C1; color: #000; }
+        .back-btn { margin-top: 20px; }
+        .back-btn a { color: #007bff; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MP3 Analysis Results</h1>
+        
+        <h2>File Information</h2>
+        <p><strong>File:</strong> {{ metrics.file }}</p>
+        <p><strong>Duration:</strong> {{ metrics.duration_sec }} seconds</p>
+        
+        <h2>Audio Quality Metrics</h2>
+        <div class="metric {{ quality.bitrate }}">
+            <strong>Bitrate:</strong> {{ metrics.bitrate_kbps }} kbps - {{ quality.bitrate.upper() }}
+        </div>
+        
+        <div class="metric {{ quality.sample_rate }}">
+            <strong>Sample Rate:</strong> {{ metrics.sample_rate_kHz }} kHz - {{ quality.sample_rate.upper() }}
+        </div>
+        
+        <div class="metric {{ quality.loudness }}">
+            <strong>Loudness:</strong> {{ metrics.loudness_LUFS }} LUFS - {{ quality.loudness.upper() }}
+        </div>
+        
+        <div class="back-btn">
+            <a href="/">← Analyze Another File</a>
+        </div>
+    </div>
+</body>
+</html>
