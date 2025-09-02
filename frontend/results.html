@@ -25,16 +25,16 @@
         <p><strong>Duration:</strong> {{ metrics.duration_sec }} seconds</p>
         
         <h2>Audio Quality Metrics</h2>
-        <div class="metric {{ quality.bitrate }}">
-            <strong>Bitrate:</strong> {{ metrics.bitrate_kbps }} kbps - {{ quality.bitrate.upper() }}
+        <div class="metric {{ quality.bitrate_kbps }}">
+            <strong>Bitrate:</strong> {{ metrics.bitrate_kbps }} kbps - {{ quality.bitrate_kbps.upper() }}
         </div>
         
-        <div class="metric {{ quality.sample_rate }}">
-            <strong>Sample Rate:</strong> {{ metrics.sample_rate_kHz }} kHz - {{ quality.sample_rate.upper() }}
+        <div class="metric {{ quality.sample_rate_kHz }}">
+            <strong>Sample Rate:</strong> {{ metrics.sample_rate_kHz }} kHz - {{ quality.sample_rate_kHz.upper() }}
         </div>
         
-        <div class="metric {{ quality.loudness }}">
-            <strong>Loudness:</strong> {{ metrics.loudness_LUFS }} LUFS - {{ quality.loudness.upper() }}
+        <div class="metric {{ quality.loudness_LUFS }}">
+            <strong>Loudness:</strong> {{ metrics.loudness_LUFS }} LUFS - {{ quality.loudness_LUFS.upper() }}
         </div>
         
         <div class="back-btn">

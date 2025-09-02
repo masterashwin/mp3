@@ -5,18 +5,9 @@
 </head>
 <body>
     <h1>Upload MP3 for Analysis</h1>
-    <form method="POST" enctype="multipart/form-data">
+    <form action="/analyse" method="POST" enctype="multipart/form-data">
         <input type="file" name="file" accept=".mp3" required>
         <button type="submit">Upload & Analyze</button>
     </form>
-
-    {% if results %}
-        <h2>Results</h2>
-        <ul>
-            {% for metric, data in results.items() %}
-                <li>{{ metric }}: {{ data.value }} ({{ data.color }})</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
 </body>
 </html>
