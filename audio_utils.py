@@ -1,6 +1,12 @@
 import librosa
 import pyloudnorm as pyln
 from mutagen.mp3 import MP3
+import lyricsgenius
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 def analyze_mp3(file_path):
     # --- Audio loading ---
@@ -58,10 +64,9 @@ def evaluate_quality(metrics: dict) -> dict:
 
     return quality
 
-#if __name__ == "__main__":
- #   file_path = "./Soweto.mp3"
-  #  result = analyze_mp3(file_path)
-   # print(result)
-    #quality = evaluate_quality(result)
-    #print(quality)
-    #print(result["file"])
+def lyricsUSTL():
+    genius = lyricsgenius.Genius()  
+    song = genius.search_song("Soweto", "Don Toliver")
+    if song:
+        print(song.lyrics)
+        return "song.lyrics"
