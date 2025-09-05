@@ -13,7 +13,7 @@ const Results = ({ data, onReset }) => {
     <div className="card card--wide">
       <h1 className="title title--primary">MP3 Analysis Results</h1>
       
-      <div className="info-section">
+      <div className="section">
         <h2 className="title title--secondary">File Information</h2>
         <div className="info-grid">
           <div className="info-grid__item">
@@ -27,7 +27,7 @@ const Results = ({ data, onReset }) => {
         </div>
       </div>
 
-      <div className="quality-section">
+      <div className="section">
         <h2 className="title title--secondary">Audio Quality Metrics</h2>
         <div className="grid grid--auto-fit">
           <div className={`metric-card metric-card--${quality.bitrate_kbps}`}>

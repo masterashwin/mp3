@@ -5,14 +5,12 @@
   gap: var(--spacing-lg);
 }
 
-/* Element: upload-form__field */
 .upload-form__field {
   position: relative;
   display: inline-block;
   width: 100%;
 }
 
-/* Element: upload-form__input */
 .upload-form__input {
   position: absolute;
   opacity: 0;
@@ -20,13 +18,10 @@
   height: 100%;
   cursor: pointer;
 }
-
-/* Modifier: upload-form__input--disabled */
 .upload-form__input--disabled {
   cursor: not-allowed;
 }
 
-/* Element: upload-form__label */
 .upload-form__label {
   display: block;
   padding: var(--spacing-lg) var(--spacing-xl);
@@ -40,12 +35,10 @@
   font-weight: var(--font-weight-medium);
 }
 
-/* Modifier: upload-form__label--hover */
 .upload-form__label:hover {
   background: var(--color-info-dark);
 }
 
-/* Modifier: upload-form__label--disabled */
 .upload-form__label--disabled {
   background: var(--color-gray-600);
   border-color: var(--color-gray-600);
