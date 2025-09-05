@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './UploadForm.css';
 
 const UploadForm = ({ onAnalysisComplete, isLoading, setIsLoading }) => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -51,28 +50,28 @@ const UploadForm = ({ onAnalysisComplete, isLoading, setIsLoading }) => {
   };
 
   return (
-    <div className="upload-container">
-      <h1>MP3 Audio Quality Analyzer</h1>
+    <div className="card">
+      <h1 className="title title--primary">MP3 Audio Quality Analyzer</h1>
       <form onSubmit={handleSubmit} className="upload-form">
-        <div className="file-input-container">
+        <div className="upload-form__field">
           <input
             type="file"
             accept=".mp3,audio/mpeg"
             onChange={handleFileChange}
             disabled={isLoading}
-            className="file-input"
+            className={`upload-form__input ${isLoading ? 'upload-form__input--disabled' : ''}`}
           />
-          <label className="file-input-label">
+          <label className={`upload-form__label ${isLoading ? 'upload-form__label--disabled' : ''}`}>
             {selectedFile ? selectedFile.name : 'Choose MP3 file...'}
           </label>
         </div>
         
-        {error && <div className="error-message">{error}</div>}
+        {error && <div className="alert alert--error">{error}</div>}
         
         <button 
           type="submit" 
           disabled={!selectedFile || isLoading}
-          className="submit-button"
+          className={`button button--primary ${(!selectedFile || isLoading) ? 'button--disabled' : ''} ${isLoading ? 'button--loading' : ''}`}
         >
           {isLoading ? 'Analyzing...' : 'Analyze Audio'}
         </button>

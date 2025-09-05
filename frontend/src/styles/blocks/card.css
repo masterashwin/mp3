@@ -1,0 +1,19 @@
+/* Block: card */
+.card {
+  background: var(--color-light);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-2xl);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Modifier: card--wide */
+.card--wide {
+  max-width: 900px;
+}
+
+/* Modifier: card--compact */
+.card--compact {
+  padding: var(--spacing-lg);
+}

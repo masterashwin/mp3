@@ -3,7 +3,6 @@ from flask_cors import CORS
 import os
 import audio_utils
 
-# Create Flask app without template folder since we're using React
 app = Flask(__name__)
 CORS(app)  # Enable CORS for React frontend
 

@@ -1,0 +1,33 @@
+/* Block: grid */
+.grid {
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+/* Modifier: grid--auto-fit */
+.grid--auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Modifier: grid--three-cols */
+.grid--three-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Modifier: grid--two-cols */
+.grid--two-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Modifier: grid--single-col */
+.grid--single-col {
+  grid-template-columns: 1fr;
+}
+
+/* Responsive modifiers */
+@media (max-width: 768px) {
+  .grid--three-cols,
+  .grid--two-cols {
+    grid-template-columns: 1fr;
+  }
+}

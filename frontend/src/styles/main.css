@@ -1,0 +1,19 @@
+/* Import order: Variables → Base → Blocks */
+
+/* Variables and utilities */
+@import './utils/variables.css';
+
+/* Base styles */
+@import './base/reset.css';
+
+/* Blocks (components) */
+@import './blocks/page.css';
+@import './blocks/card.css';
+@import './blocks/title.css';
+@import './blocks/button.css';
+@import './blocks/upload-form.css';
+@import './blocks/alert.css';
+@import './blocks/info-grid.css';
+@import './blocks/metric-card.css';
+@import './blocks/legend.css';
+@import './blocks/grid.css';

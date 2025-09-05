@@ -1,0 +1,28 @@
+/* Block: alert */
+.alert {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin: var(--spacing-md) 0;
+  font-weight: var(--font-weight-medium);
+}
+
+/* Modifier: alert--error */
+.alert--error {
+  color: var(--color-danger);
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+/* Modifier: alert--success */
+.alert--success {
+  color: var(--color-success);
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+/* Modifier: alert--info */
+.alert--info {
+  color: var(--color-info);
+  background: #d1ecf1;
+  border: 1px solid #bee5eb;
+}

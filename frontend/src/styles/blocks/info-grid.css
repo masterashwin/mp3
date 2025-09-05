@@ -1,0 +1,26 @@
+/* Block: info-grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+/* Element: info-grid__item */
+.info-grid__item {
+  background: var(--color-white);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Element: info-grid__label */
+.info-grid__label {
+  font-weight: var(--font-weight-semibold);
+  margin-right: var(--spacing-sm);
+}
+
+/* Modifier: info-grid--single-column */
+.info-grid--single-column {
+  grid-template-columns: 1fr;
+}

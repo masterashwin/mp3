@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import UploadForm from './UploadForm';
 import Results from './Results';
-import './App.css';
+import './styles/main.css';
 
 function App() {
   const [analysisData, setAnalysisData] = useState(null);
@@ -16,7 +16,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="page">
       {!analysisData ? (
         <UploadForm 
           onAnalysisComplete={handleAnalysisComplete}
