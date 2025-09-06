@@ -1,6 +1,6 @@
-/* Import order: Variables → Base → Blocks */
+/* Import order: Variables → Base → Blocks → Utilities */
 
-/* Variables and utilities */
+/* Variables */
 @import './utils/variables.css';
 
 /* Base styles */
@@ -19,3 +19,8 @@
 @import './blocks/legend.css';
 @import './blocks/grid.css';
 @import './blocks/lyrics.css';
+
+/* Utility classes */
+@import './utils/surface.css';
+@import './utils/text.css';
+@import './utils/layout.css';

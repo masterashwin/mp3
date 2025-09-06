@@ -1,15 +1,3 @@
-.legend {
-  background: var(--color-white);
-  padding: var(--spacing-xl);
-  border-radius: var(--radius-lg);
-}
-
-.legend__title {
-  color: var(--color-dark);
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
-}
-
 .legend__items {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -28,9 +16,4 @@
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-gray-300);
   flex-shrink: 0;
-}
-
-.legend__text {
-  font-size: var(--font-size-sm);
-  color: var(--color-gray-700);
 }

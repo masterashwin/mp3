@@ -67,7 +67,7 @@ const UploadForm = ({ onAnalysisComplete, isProcessing, setIsProcessing }) => {
   return (
     <div className="card">
       <h1 className="title title--primary">MP3 Audio Quality Analyzer</h1>
-      <form onSubmit={handleSubmit} className="upload-form">
+      <form onSubmit={handleSubmit} className="upload-form flex flex--column gap--lg">
         <div className="upload-form__field">
           <input
             type="file"
@@ -81,13 +81,13 @@ const UploadForm = ({ onAnalysisComplete, isProcessing, setIsProcessing }) => {
           </label>
         </div>
 
-        <div className="upload-form__section">
-          <h3 className="upload-form__section-title">Optional: Get Lyrics</h3>
-          <p className="upload-form__description">
+        <div className="upload-form__section surface--subtle surface--padding-lg">
+          <h3 className="upload-form__section-title text--lg text--bold text--primary mb--sm">Optional: Get Lyrics</h3>
+          <p className="upload-form__description text--sm text--secondary mb--md">
             Fill both fields to include lyrics in your analysis (leave both empty to skip)
           </p>
           
-          <div className="upload-form__field">
+          <div className="upload-form__field mb--md">
             <input
               type="text"
               placeholder="Song name"

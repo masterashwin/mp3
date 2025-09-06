@@ -1,0 +1,31 @@
+/* Layout utility classes */
+
+/* Flexbox utilities */
+.flex { display: flex; }
+.flex--column { flex-direction: column; }
+.flex--wrap { flex-wrap: wrap; }
+.flex--center { align-items: center; justify-content: center; }
+.flex--between { justify-content: space-between; }
+.flex--start { justify-content: flex-start; }
+.flex--end { justify-content: flex-end; }
+
+/* Gap utilities */
+.gap--xs { gap: var(--spacing-xs); }
+.gap--sm { gap: var(--spacing-sm); }
+.gap--md { gap: var(--spacing-md); }
+.gap--lg { gap: var(--spacing-lg); }
+.gap--xl { gap: var(--spacing-xl); }
+
+/* Grid utilities */
+.grid { display: grid; }
+.grid--auto-fit-sm { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+.grid--auto-fit-md { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.grid--auto-fit-lg { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
+/* Spacing utilities */
+.m-0 { margin: 0; }
+.mb--sm { margin-bottom: var(--spacing-sm); }
+.mb--md { margin-bottom: var(--spacing-md); }
+.mb--lg { margin-bottom: var(--spacing-lg); }
+.pb--sm { padding-bottom: var(--spacing-sm); }
+.pb--md { padding-bottom: var(--spacing-md); }

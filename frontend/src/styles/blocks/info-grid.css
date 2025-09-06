@@ -4,13 +4,6 @@
   gap: var(--spacing-lg);
 }
 
-.info-grid__item {
-  background: var(--color-white);
-  padding: var(--spacing-lg);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-}
-
 .info-grid__label {
   font-weight: var(--font-weight-semibold);
   margin-right: var(--spacing-sm);
