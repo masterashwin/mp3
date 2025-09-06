@@ -5,7 +5,7 @@ import './styles/main.css';
 
 function App() {
   const [analysisData, setAnalysisData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const handleAnalysisComplete = (data) => {
     setAnalysisData(data);
@@ -20,8 +20,8 @@ function App() {
       {!analysisData ? (
         <UploadForm 
           onAnalysisComplete={handleAnalysisComplete}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
+          isProcessing={isProcessing}
+          setIsProcessing={setIsProcessing}
         />
       ) : (
         <Results 

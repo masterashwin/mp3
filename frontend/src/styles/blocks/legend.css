@@ -1,11 +1,9 @@
-/* Block: legend */
 .legend {
   background: var(--color-white);
   padding: var(--spacing-xl);
   border-radius: var(--radius-lg);
 }
 
-/* Element: legend__title */
 .legend__title {
   color: var(--color-dark);
   font-size: var(--font-size-xl);

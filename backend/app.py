@@ -13,6 +13,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 def health_check():
     return jsonify({"status": "healthy", "message": "Backend API is running"})
 
+#This is old and can be used for testing and future features
 @app.route('/api/lyrics', methods=['GET'])
 def get_lyrics():
     try:
@@ -40,12 +41,24 @@ def analyse():
         metrics = audio_utils.analyze_mp3(file_path)
         quality = audio_utils.evaluate_quality(metrics)
         
-        # Clean up the uploaded file after analysis
+        # Optional lyrics request
+        lyrics = None
+        song_name = request.form.get('songName', '').strip()
+        artist_name = request.form.get('artistName', '').strip()
+        
+        if song_name and artist_name:
+            lyrics = audio_utils.get_lyrics(song_name, artist_name)
+        
         os.remove(file_path)
         
         return jsonify({
             "metrics": metrics,
             "quality": quality,
+            "lyrics": lyrics,
+            "song_info": {
+                "song_name": song_name if song_name else None,
+                "artist_name": artist_name if artist_name else None
+            },
             "success": True
         })
         

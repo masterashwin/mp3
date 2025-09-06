@@ -1,4 +1,3 @@
-/* Block: card */
 .card {
   background: var(--color-light);
   border-radius: var(--radius-xl);
@@ -11,12 +10,10 @@
   gap: var(--spacing-lg);
 }
 
-/* Modifier: card--wide */
 .card--wide {
   max-width: 900px;
 }
 
-/* Modifier: card--compact */
 .card--compact {
   padding: var(--spacing-lg);
 }

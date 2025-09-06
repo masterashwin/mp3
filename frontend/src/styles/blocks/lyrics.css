@@ -1,0 +1,80 @@
+.lyrics {
+  background: var(--color-surface);
+  border-radius: var(--border-radius-large);
+  padding: var(--space-large);
+  border: 1px solid var(--color-border);
+}
+
+.lyrics__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-medium);
+  padding-bottom: var(--space-medium);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.lyrics__song-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xsmall);
+}
+
+.lyrics__song-title {
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.lyrics__artist {
+  font-size: var(--font-size-medium);
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.lyrics__content {
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--border-radius-medium);
+  padding: var(--space-large);
+  max-height: 400px;
+  overflow-y: auto;
+  line-height: 1.6;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-small);
+  color: var(--color-text-primary);
+  white-space: pre-line;
+}
+
+.lyrics__content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lyrics__content::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+.lyrics__content::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+.lyrics__content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+.lyrics__error {
+  color: var(--color-error);
+  font-style: italic;
+  text-align: center;
+  padding: var(--space-medium);
+}
+
+.lyrics--loading .lyrics__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}

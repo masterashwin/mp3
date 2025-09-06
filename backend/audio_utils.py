@@ -64,9 +64,18 @@ def evaluate_quality(metrics: dict) -> dict:
 
     return quality
 
-def lyricsUSTL():
-    genius = lyricsgenius.Genius()  
-    song = genius.search_song("Soweto", "Don Toliver")
-    if song:
-        print(song.lyrics)
-        return "song.lyrics"
+def get_lyrics(song_name, artist_name):
+    try:
+            
+        genius = lyricsgenius.Genius()
+        #genius.remove_section_headers = True # Remove section headers (e.g. [Chorus]) from lyrics when searching
+        #genius.skip_non_songs = True
+        
+        song = genius.search_song(song_name, artist_name)
+        if song and song.lyrics:
+            return song.lyrics.strip()
+        return None
+        
+    except Exception as e:
+        print(f"Error fetching lyrics: {str(e)}")
+        return None
