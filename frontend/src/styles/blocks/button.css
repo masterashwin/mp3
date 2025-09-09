@@ -65,3 +65,21 @@
   from { transform: rotate(0turn); }
   to { transform: rotate(1turn); }
 }
+
+.button--info {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-xs);
+  font-size: var(--font-size-base);
+  min-width: auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.button--info:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: scale(1.1);
+}

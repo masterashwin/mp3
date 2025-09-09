@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const UploadForm = ({ onAnalysisComplete, isProcessing, setIsProcessing }) => {
+  const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState(null);
   const [songName, setSongName] = useState('');
   const [artistName, setArtistName] = useState('');
@@ -54,6 +56,7 @@ const UploadForm = ({ onAnalysisComplete, isProcessing, setIsProcessing }) => {
 
       if (data.success) {
         onAnalysisComplete(data);
+        navigate('/results'); // Navigate to results page
       } else {
         setError(data.error || 'Analysis failed');
       }

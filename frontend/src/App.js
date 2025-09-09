@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import UploadForm from './UploadForm';
-import Results from './Results';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import UploadForm from './pages/UploadForm';
+import Results from './pages/Results';
+import AudioEducation from './pages/AudioEducation';
 import './styles/main.css';
 
 function App() {
@@ -16,20 +18,43 @@ function App() {
   };
 
   return (
-    <div className="page">
-      {!analysisData ? (
-        <UploadForm 
-          onAnalysisComplete={handleAnalysisComplete}
-          isProcessing={isProcessing}
-          setIsProcessing={setIsProcessing}
-        />
-      ) : (
-        <Results 
-          data={analysisData}
-          onReset={handleReset}
-        />
-      )}
-    </div>
+    <Router>
+      <div className="page">
+        <Routes>
+          <Route 
+            path="/" 
+            element={
+              <UploadForm 
+                onAnalysisComplete={handleAnalysisComplete}
+                isProcessing={isProcessing}
+                setIsProcessing={setIsProcessing}
+              />
+            } 
+          />
+          
+          <Route 
+            path="/results" 
+            element={
+              analysisData ? (
+                <Results 
+                  data={analysisData}
+                  onReset={handleReset}
+                />
+              ) : (
+                <Navigate to="/" replace />
+              )
+            } 
+          />
+          
+          <Route 
+            path="/info" 
+            element={<AudioEducation />} 
+          />
+          
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

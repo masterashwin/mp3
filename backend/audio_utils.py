@@ -22,6 +22,7 @@ def analyze_mp3(file_path):
 
     # --- MP3 metadata (bitrate, sample rate) ---
     audio = MP3(file_path)
+    # bitrate and sample_rate are extracted from the MP3 file metadata not computed from audio data
     bitrate = audio.info.bitrate // 1000  # kbps
     sample_rate = audio.info.sample_rate / 1000  # kHz
 
