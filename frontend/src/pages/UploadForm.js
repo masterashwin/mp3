@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import InfoButton from '../components/InfoButton';
 
 const UploadForm = ({ onAnalysisComplete, isProcessing, setIsProcessing }) => {
   const navigate = useNavigate();
@@ -69,7 +70,12 @@ const UploadForm = ({ onAnalysisComplete, isProcessing, setIsProcessing }) => {
 
   return (
     <div className="card">
-      <h1 className="title title--primary">MP3 Audio Quality Analyzer</h1>
+      <h1 className="title title--primary">MP3 Audio Quality Analyzer
+        <InfoButton 
+              onClick={() => navigate('/info')}
+              title="Learn about audio quality metrics"
+            />
+      </h1>
       <form onSubmit={handleSubmit} className="upload-form flex flex--column gap--lg">
         <div className="upload-form__field">
           <input
