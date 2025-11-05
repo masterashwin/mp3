@@ -42,6 +42,8 @@ return (
                 <div className="metric-card__label">Bitrate</div>
                 <div className="metric-card__value">{metrics.bitrate_kbps} kbps</div>
                 <div className="metric-card__quality">{quality.bitrate_kbps.toUpperCase()}</div>
+                <div className="metric-card__quality">{metrics.true_quality_estimation}</div>
+                <div className="metric-card__quality">{metrics.summaryCutOff.confidence}</div>
             </div>
 
             <div className={`metric-card metric-card--${quality.sample_rate_kHz}`}>

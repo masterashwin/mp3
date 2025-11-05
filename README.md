@@ -41,7 +41,7 @@ cd mp3
 source .venv/bin/activate
 
 # Install Python dependencies (if not already installed)
-pip install flask flask-cors librosa pyloudnorm mutagen lyricsgenius python-dotenv
+pip install flask flask-cors librosa pyloudnorm mutagen lyricsgenius python-dotenv numpy matplotlib
 ```
 
 ### 3. Frontend Setup
