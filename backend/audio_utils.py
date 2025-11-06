@@ -72,7 +72,7 @@ def detect_cutoff_frequency(y, sr,
     # Also return the cutoff frequency in Hz (useful for quality heuristics)
     cutoff_hz = float(freqs[min(cutoff_idx, len(freqs)-1)])
 
-    return {"cutoff_hz": cutoff_hz, "summaryCutOff": summary}
+    return {"true_quality_estimation": cutoff_hz, "summaryCutOff": summary}
 
 def summarize_cutoff(freqs, mag_db_smooth, cutoff_idx, window_bins=12):
     """Return a cutoff range (Hz) and a simple confidence score."""
@@ -111,7 +111,7 @@ def analyze_mp3(file_path):
 
     # --- TRUE QUALITY ESTIMATION ---
     cutoff_info = detect_cutoff_frequency(y, sr)
-    cutoff_hz_value = cutoff_info.get("cutoff_hz", None)
+    cutoff_hz_value = cutoff_info.get("true_quality_estimation", None)
 
     return {
         "file": file_path,

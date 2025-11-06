@@ -34,6 +34,28 @@
   letter-spacing: 1px;
 }
 
+.metric-card__sub {
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-700);
+}
+
+.metric-card__sub--label {
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 2px;
+}
+
+.metric-card__sub--value {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-dark);
+}
+
+.metric-separator {
+  border: none;
+  border-top: 1px solid var(--color-gray-600);
+  margin: var(--spacing-md) 0;
+}
+
 .metric-card--golden {
   background: var(--color-quality-golden);
 }
