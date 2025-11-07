@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Section from '../components/Section';
 
 const AudioEducation = () => {
   const navigate = useNavigate();
@@ -17,9 +18,7 @@ const AudioEducation = () => {
         You don’t need to be an audio engineer to understand this. Once you grasp these basics,
         you'll instantly be able to tell whether a file is truly high quality or just pretending.
       </p>
-      {/* 1. BITRATE */}
-      <div className="section">
-        <h2 className="title title--secondary">1. Bitrate (What the File *Claims*)</h2>
+      <Section title={'1. Bitrate (What the File *Claims*)'}>
         <p className="text--base text--secondary">
           Bitrate is the amount of data used per second, measured in <b>kbps</b>.
           A higher bitrate <i>usually</i> means better quality — but this value can be misleading.
@@ -29,10 +28,8 @@ const AudioEducation = () => {
           re-save it as a <b>320 kbps MP3</b>. This makes the file look high-quality, but the sound
           inside hasn’t improved — it's the same audio, just in a bigger file.
         </p>
-      </div>
-      {/* 2. REAL SOURCE QUALITY */}
-      <div className="section">
-        <h2 className="title title--secondary">2. Real Source Quality (Cutoff Frequency in kHz)</h2>
+      </Section>
+      <Section title={'2. Real Source Quality (Cutoff Frequency in kHz)'}>
         <p className="text--base text--secondary">
           Music contains frequencies ranging from deep bass up to very high treble.
           <b>High-quality audio preserves details up to ~20 kHz.</b>
@@ -48,10 +45,8 @@ const AudioEducation = () => {
           <li><b>~17–18 kHz</b> → YouTube / Spotify Free (~160 kbps)</li>
           <li><b>~15–16 kHz</b> → Low-quality MP3 / older streams</li>
         </ul>
-      </div>
-      {/* 3. CUTOFF SHAPE / CONFIDENCE */}
-      <div className="section">
-        <h2 className="title title--secondary">3. Cutoff Shape & "Confidence"</h2>
+      </Section>
+      <Section title={'3. Cutoff Shape & "Confidence"'}>
         <p className="text--base text--secondary">
           The <b>shape</b> of the cutoff reveals how the file was encoded:
         </p>
@@ -65,12 +60,9 @@ const AudioEducation = () => {
           This is what the <b>confidence</b> value means — not “how sure” the system is,
           but whether the cutoff is smooth or sharp.
         </p>
-      </div>
+      </Section>
 
-      {/* 4. SAMPLE RATE / BIT DEPTH */}
-      <div className="section">
-        <h2 className="title title--secondary">4. Sample Rate & Bit Depth</h2>
-
+      <Section title={'4. Sample Rate & Bit Depth'}>
         <p className="text--base text--secondary">
           These describe how the audio was originally captured:
         </p>
@@ -83,12 +75,9 @@ const AudioEducation = () => {
         <p className="text--base text--secondary">
           Higher sample rate and bit depth help <i>only</i> if the bitrate is high enough.
         </p>
-      </div>
+      </Section>
 
-      {/* 5. LOUDNESS */}
-      <div className="section">
-        <h2 className="title title--secondary">5. Loudness (LUFS vs dBFS)</h2>
-
+      <Section title={'5. Loudness (LUFS vs dBFS)'}>
         <p className="text--base text--secondary">
           We used to measure loudness using <b>dBFS</b> (digital peak level).
           But the human ear does not hear all frequencies equally.
@@ -104,12 +93,9 @@ const AudioEducation = () => {
           <li><b>-8 to -10 LUFS</b> → loud modern pop</li>
           <li><b>-18+ LUFS</b> → more dynamic / softer masters</li>
         </ul>
-      </div>
+      </Section>
 
-      {/* 6. STREAMING PLATFORM QUALITY */}
-      <div className="section">
-        <h2 className="title title--secondary">6. Streaming Platform Quality</h2>
-
+      <Section title={'6. Streaming Platform Quality'}>
         <ul className="text--base text--secondary">
           <li><b>YouTube</b>: ~160 kbps Opus</li>
           <li><b>Spotify Free</b>: ~160 kbps Ogg</li>
@@ -117,12 +103,9 @@ const AudioEducation = () => {
           <li><b>Apple Music</b>: 256 kbps AAC</li>
           <li><b>Tidal / Apple Music Lossless</b>: FLAC / ALAC (true lossless)</li>
         </ul>
-      </div>
+      </Section>
 
-      {/* 7. BLUETOOTH */}
-      <div className="section">
-        <h2 className="title title--secondary">7. Bluetooth Playback Quality</h2>
-
+      <Section title={'7. Bluetooth Playback Quality'}>
         <p className="text--base text--secondary">
           Even if your file is high quality, Bluetooth can compress it again during playback.
         </p>
@@ -133,27 +116,23 @@ const AudioEducation = () => {
           <li><b>aptX / aptX HD</b>: better on some Android devices</li>
           <li><b>LDAC</b>: Sony high-resolution Bluetooth (best wireless option)</li>
         </ul>
-      </div>
+      </Section>
 
-      {/* 8. INTERPRETING APP RESULTS */}
-      <div className="section">
-        <h2 className="title title--secondary">8. How to Read Your Results</h2>
-
+      <Section title={'8. How to Read Your Results'}>
         <p className="text--base text--secondary">
           • <b>Bitrate</b> = what the file claims<br />
           • <b>Real Source Quality</b> = the truth (based on cutoff)<br />
           • <b>Cutoff Type</b> = hints where it came from (YouTube, MP3, lossless, etc.)<br />
           • <b>LUFS</b> = how loud and punchy it feels<br />
         </p>
-      </div>
+      </Section>
 
-      <div className="section">
-        <h2 className="title title--secondary">9. Quick Interpretation</h2>
+      <Section title={'9. Quick Interpretation'}>
         <p className="text--base text--secondary">
           If the bitrate looks high but the <b>real source quality</b> shows ~17–18 kHz,
           the file probably came from YouTube. If you see ~19–20 kHz, it's a real high-quality MP3.
         </p>
-      </div>
+      </Section>
     </div>
   );
 };
