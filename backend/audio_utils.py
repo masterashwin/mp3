@@ -8,6 +8,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load environment variables from .env file
+#yt-dlp
+#ffmpeg -i Soweto.mp3 -lavfi showspectrumpic=s=1920x1080:saturation=1 mp3_spectrogram.png =======> generate spectrogram image from mp3 file
+#ffmpeg -i original.webm -c:a libmp3lame -b:a 320k original_320.mp3 ======> convert webm to mp3 with 320kbps
+
 load_dotenv()
 
 def detect_cutoff_frequency(y, sr,
