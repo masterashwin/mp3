@@ -19,7 +19,7 @@ This README is updated to reflect recent changes: an optional lyrics feature, fr
 - Frontend routes:
 	- `/` - Upload page
 	- `/results` - Results page (only accessible after an analysis)
-	- `/info` - Audio education / metrics documentation (placeholder)
+	- `/info` - Audio education / metrics documentation 
 
 - Backend API:
 	- `GET /api/health` - health check
