@@ -66,9 +66,9 @@ Create and activate a Python virtual environment and install dependencies:
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-#pip install -r backend/requirements.txt
+pip install -r backend/requirements.txt
 # OR install directly:
-pip install flask flask-cors librosa pyloudnorm mutagen lyricsgenius python-dotenv numpy matplotlib sqlalchemy sqlalchemy-utils flask_sqlalchemy
+pip install flask flask-cors librosa pyloudnorm mutagen lyricsgenius python-dotenv numpy matplotlib
 ```
 
 ### Frontend

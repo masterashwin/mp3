@@ -2,11 +2,9 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
 import audio_utils
-from db import init_db, SessionLocal, Track
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for React frontend
-init_db()
 
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -52,25 +50,7 @@ def analyse():
             lyrics = audio_utils.get_lyrics(song_name, artist_name)
         
         os.remove(file_path)
-
-        db = SessionLocal()
-        try:
-            track = Track(
-                file_name=file.filename,
-                title=song_name,
-                artist=artist_name,
-                duration_sec=metrics["duration_sec"],
-                bitrate_claimed_kbps=metrics["bitrate_kbps"],
-                cutoff_khz=metrics["true_quality_estimation"],
-                confidence=metrics["summaryCutOff"]["confidence"],
-                loudness_lufs=metrics["loudness_LUFS"],
-                lyrics=lyrics
-            )
-            db.add(track)
-            db.commit()
-        finally:       
-            db.close()
-
+        
         return jsonify({
             "metrics": metrics,
             "quality": quality,
@@ -86,4 +66,4 @@ def analyse():
         return jsonify({"error": str(e), "success": False}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=8080, use_reloader=False)
+    app.run(debug=True, host='0.0.0.0', port=8080)
