@@ -10,6 +10,12 @@ import matplotlib.pyplot as plt
 # Load environment variables from .env file
 load_dotenv()
 
+# y = audio waveform, sr = sample rate in Hz, 
+# n_fft = window size for analysis(larger = more precise frequency detection but more computationally expensive/slower),
+# hop_length = hop length in samples
+#Returns: cutoff_idx = This audio cuts off at approximately 5,000 Hz" (5 kHz)
+#summaryCutOff = "We're 80% confident (confidence: 0.8)"
+#The lower the cutoff frequency, the more the audio is "squished down" to save file size → lower quality.
 def detect_cutoff_frequency(y, sr,
                             n_fft=8192, hop_length=2048,
                             midband=(1000, 5000),
@@ -18,17 +24,21 @@ def detect_cutoff_frequency(y, sr,
                             consec_bins=8,
                             smooth_bins=9):
 
-    # STFT magnitude (how much energy lives at each frequency)
+    # STFT magnitude (how much energy lives at each frequency), 
+    # Result: Instead of "here's a wave," you get "at 100 Hz there's 5 units of energy, at 200 Hz there's 3 units," etc.
     S = np.abs(librosa.stft(y, n_fft=n_fft, hop_length=hop_length, window='hann'))
     freqs = librosa.fft_frequencies(sr=sr, n_fft=n_fft)
 
     # Average (median) across time (one curve: energy vs frequency)
     mag = np.median(S, axis=1)
 
-    # Convert to dB relative to the max in the spectrum
+    # Convert to dB relative to the max in the spectrum. 
+    # Make small difference in frequency more meaningful. A drop of 20 dB means the energy is 100 times lower.
     mag_db = librosa.amplitude_to_db(mag, ref=np.max)
 
-    # Find midband reference level (median dB between 1–5 kHz by default)
+    # Find midband reference level - this is where most music lives
+    # (median dB between 1–5 kHz by default)
+    #Enable us to say audo cutt off when energy drop 25db below midreference level
     mb_lo = np.searchsorted(freqs, midband[0])
     mb_hi = np.searchsorted(freqs, midband[1])
     mid_ref_db = np.median(mag_db[mb_lo:mb_hi])
@@ -48,7 +58,8 @@ def detect_cutoff_frequency(y, sr,
 
     below = mag_db_smooth[start_idx:] < thr_db
 
-    # Require 'consec_bins' consecutive bins below threshold
+    # Looking for where energy drops below threshold for a sustained period (consec_bins => 8 consecutive bins).
+    # Find where audio cutoff happens. If we see 8 consecutive bins below threshold, we say "ok, cutoff is around here." 
     if consec_bins > 1:
         # rolling sum over boolean array
         win = np.ones(consec_bins, dtype=int)
