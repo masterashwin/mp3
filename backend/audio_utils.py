@@ -176,7 +176,8 @@ def get_lyrics(song_name, artist_name):
         if song and song.lyrics:
             return song.lyrics.strip()
         return None
-        
+    #TODO: More specific exception handling 
+    #catch specific errors (e.g., librosa.LibrosaError) and log them using a proper Logging library instead of print().
     except Exception as e:
         print(f"Error fetching lyrics: {str(e)}")
         return None

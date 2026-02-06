@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import InfoButton from '../components/InfoButton';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080';
+
 const UploadForm = ({ onAnalysisComplete, isProcessing, setIsProcessing }) => {
   const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState(null);
@@ -48,7 +50,7 @@ const UploadForm = ({ onAnalysisComplete, isProcessing, setIsProcessing }) => {
     }
 
     try {
-      const response = await fetch('http://localhost:8080/api/analyse', {
+      const response = await fetch(`${API_BASE_URL}/api/analyse`, {
         method: 'POST',
         body: formData,
       });
