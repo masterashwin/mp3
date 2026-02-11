@@ -1,0 +1,18 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    env_file:
+      - ./.env
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        REACT_APP_API_BASE_URL: http://localhost:8080
+    ports:
+      - "3000:80"  ## outside:inside → 3000 on your machine → 80 inside container
+    depends_on:
+      - backend
