@@ -15,8 +15,14 @@ RUN npm run build
 
 FROM nginx:1.27-alpine
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+RUN mkdir -p /tmp/client_temp /tmp/proxy_temp /tmp/fastcgi_temp /tmp/scgi_temp /tmp/uwsgi_temp
+
+COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /app/build /usr/share/nginx/html
+RUN chown -R appuser:appgroup /usr/share/nginx/html /tmp
+
+USER appuser
 
 EXPOSE 80
 
