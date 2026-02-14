@@ -69,6 +69,24 @@ This project is an MP3 Audio Quality Analyzer with a Flask backend and a React f
 - The current structure allows easy extension with new metrics or UI cards by adding a backend metric and a frontend component.
 - The lyrics feature is built as a optional extension without complicating the core audio flow.
 
+## Technical Challenges
+
+### Scraping & Anti-Bot Mitigations (Lyrics in Docker)
+One of the primary hurdles in this project was the transition of the lyric-fetching module to Docker.
+
+**The Issue:** The `lyricsgenius` library retrieves lyrics by scraping the Genius website (their JSON API does not provide full lyric text). When running inside a `python:slim` Docker container, requests are consistently met with a 403 Forbidden error.
+
+**Root Cause Analysis:**
+- **TLS Fingerprinting:** Cloudflare (used by Genius) detects SSL handshakes and network headers typical of minimal Linux containers and flags them as automated traffic.
+- **Network Isolation:** Attempts to use `network_mode: host` to mitigate this caused local DNS resolution conflicts between frontend and backend services.
+
+**Attempted Fixes:**
+- **Header Spoofing:** Injected browser-like User-Agent strings into Genius request headers.
+- **Image Optimization:** Tested images with updated `ca-certificates` for more modern TLS handshakes.
+- **Network Configuration:** Verified behavior under bridge vs. host networking.
+
+**Conclusion:** To keep the core audio analysis stable and lightweight in Docker, lyric fetching is treated as an environment-specific feature. Avoiding heavy headless browser dependencies (e.g., Selenium/Playwright) prevents a large increase in image size and operational complexity.
+
 ## Trade‑offs
 - **Pros:** Clear structure, readable code, user‑friendly outputs, extensible architecture.
 - **Cons:** Single‑endpoint design may grow large if many features are added; additional audio formats would require further validation and parsing logic.

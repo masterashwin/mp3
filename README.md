@@ -101,6 +101,33 @@ npm start
 
 Frontend runs on `http://localhost:3000` by default and the backend on `http://localhost:8080`.
 
+### Docker (alternative setup)
+
+Prerequisite: Docker Desktop (macOS/Windows) or Docker Engine + Compose (Linux).
+
+Production-style build:
+
+```bash
+docker compose up --build
+```
+
+Development mode (live code mounts):
+
+```bash
+docker compose -f docker-compose.dev.yml up --build
+```
+
+## Known Limitations: Docker vs. Local Environment
+
+⚠️ Known Limitations: Docker vs. Local Environment
+While the application is fully containerized, there is a known limitation regarding the Lyric Fetching feature:
+
+Local Virtual Environment: Full support for lyric fetching via the Genius API.
+
+Docker Environment: Lyric fetching is currently disabled/unavailable due to upstream anti-bot protections (Cloudflare) that flag containerized traffic.
+
+For the full experience, including lyrics, it is recommended to run the backend in a standard Python virtual environment.
+
 ## Styling and structure notes
 
 The project uses a hybrid CSS approach:
@@ -120,7 +147,7 @@ New/changed CSS helpers and modifiers you might want to use:
 
 - If you move files around, restart VS Code to avoid it auto-creating empty files from stale imports.
 - If lyrics lookup isn't working, confirm `GENIUS_API_TOKEN` is set and that both `songName` and `artistName` were provided on the upload form.
-- The true-quality estimator uses spectral analysis heuristics and returns a cutoff frequency (Hz) and a small confidence value. You may want to tune thresholds in `audio_utils.classify_quality` for your dataset.
+- The true-quality estimator uses spectral analysis heuristics and returns a cutoff frequency (Hz) and a small confidence value. You may want to tune `detect_cutoff_frequency()` parameters (e.g., `drop_db`, `consec_bins`, `smooth_bins`) and the `QUALITY_THRESHOLDS` in `evaluate_quality()` for your dataset.
 
 ## Project layout (high level)
 

@@ -9,6 +9,9 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         ffmpeg \
         libsndfile1 \
+        ca-certificates \
+        curl \
+    && apt-get clean \
     # Clean up the apt cache to reduce the image size.(For optimization purposes)
     && rm -rf /var/lib/apt/lists/*
 
