@@ -251,7 +251,7 @@ This structure matches a scalable design system approach and makes CSS predictab
 ### Simplicity Over Complexity
 - The project favors straightforward implementation over heavy abstractions
 - The analysis happens in one backend call, minimizing UI complexity
-- Reduces cognitive load for future maintainers
+- Reduces cognitive load for future maintenance
 
 ### Human-Readable Outputs
 - The backend returns raw metric values plus classification labels
