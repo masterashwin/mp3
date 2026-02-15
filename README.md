@@ -50,6 +50,106 @@ Create a `.env` file (or copy `.env.example`) and add the following if you wish 
 
 Note: current code contains a legacy lyrics helper in `audio_utils.py`. The lyrics fetch will run only when both song + artist are provided. If you don't set a token, lyrics fetching will be skipped or may fail gracefully.
 
+## Database Setup
+
+This application uses **PostgreSQL** to store track information (artist name, song title, and lyrics). The database is automatically initialized on backend startup.
+
+### PostgreSQL Installation
+
+**Docker (Recommended for Quick Setup):**
+If using Docker, PostgreSQL is included in `docker-compose.yml` and `docker-compose.dev.yml`. No additional setup needed—just run:
+```bash
+docker compose up --build
+```
+This starts PostgreSQL, pgAdmin, the Flask backend, and React frontend automatically.
+
+**Virtual Environment (macOS with Homebrew):**
+```bash
+# Install PostgreSQL
+brew install postgresql@15
+
+# Start the PostgreSQL service
+brew services start postgresql@15
+
+# Create the audio_analyzer database
+createdb audio_analyzer
+
+# Verify connection
+psql audio_analyzer
+```
+
+**Virtual Environment (Linux):**
+```bash
+# Install PostgreSQL
+sudo apt-get install postgresql postgresql-contrib
+
+# Start the service
+sudo systemctl start postgresql
+
+# Create the database as the postgres user
+sudo -u postgres createdb audio_analyzer
+```
+
+**Virtual Environment (Windows):**
+Download and install PostgreSQL from [postgresql.org](https://www.postgresql.org/download/windows/). During installation, set a password for the `postgres` user. Then create the database:
+```bash
+psql -U postgres -c "CREATE DATABASE audio_analyzer;"
+```
+
+### Database Configuration
+
+The backend reads database credentials from your `.env` file. Copy `.env.example` and update if needed:
+
+```bash
+cp .env.example .env
+```
+
+**Homebrew macOS users:** The default `.env` is pre-configured to use your macOS username. No changes needed if you ran `brew services start postgresql@15`.
+
+**Docker users:** Update `.env` to match your chosen credentials (defaults: `audio_analyzer`/`postgres123`).
+
+**Other environments:** Adjust `DB_HOST`, `DB_USER`, `DB_PASSWORD`, and `DB_PORT` in `.env` as needed.
+
+### Viewing Data with pgAdmin (GUI)
+
+**Docker:**
+1. Start Docker Compose: `docker compose up`
+2. Open [http://localhost:5050](http://localhost:5050) in your browser
+3. Login with `admin@example.com` / `admin`
+4. Click "Add New Server"
+   - **Name:** `audio_analyser` (or any name)
+   - **Host name:** `db` (Docker service name)
+   - **Port:** `5432`
+   - **Username:** `postgres`
+   - **Password:** `postgres`
+5. Navigate to `audio_analyzer` → `Schemas` → `public` → `Tables` → `track_info`
+
+**Virtual Environment (macOS):**
+```bash
+# Install pgAdmin locally
+brew install pgadmin4
+
+# Start pgAdmin (or use the installed GUI app)
+pgadmin4
+
+# Then open http://localhost:5050 and follow Docker steps above
+# Local connection: Host: localhost, Port: 5432, User: <your-macOS-username>, Password: (leave blank)
+```
+
+### Database Schema
+
+The `track_info` table stores:
+- `session_id` — Auto-incrementing primary key
+- `artist_name` — Track artist
+- `song_title` — Track title
+- `lyrics_body` — Full lyrics text (nullable)
+- `created_at` — Timestamp when record was created
+- `updated_at` — Timestamp when record was last updated
+
+**Smart Upsert Logic:** If you upload the same song/artist combination twice, the database updates the existing record (including lyrics) instead of creating duplicates.
+
+---
+
 ## Development setup
 
 ### Prerequisites
@@ -58,6 +158,7 @@ Note: current code contains a legacy lyrics helper in `audio_utils.py`. The lyri
 - Node.js 14+
 - npm or yarn
 - ffmpeg installed (librosa may require it for certain file formats)
+- PostgreSQL 12+ (or Docker)
 
 ### Backend
 
